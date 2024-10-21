@@ -1,0 +1,44 @@
+create database utepsa
+
+create table datos(
+	id int PRIMARY KEY AUTO_INCREMENT,
+    usuario varchar(90) not null,
+    contrasena varchar(90) not null,
+    nombre_completo varchar(255) not null
+);
+
+create table eventos(
+    id int PRIMARY KEY AUTO_INCREMENT,
+    hora time not null,
+    descripcion text not null,
+    aula varchar(255) not null,
+    expositor varchar(255) not null,
+    fecha date not null
+);
+
+//certificados
+
+CREATE TABLE gestion (
+    id_gestion INT PRIMARY KEY AUTO_INCREMENT,
+    gestion varchar(20) NOT NULL
+);
+
+CREATE TABLE participacion (
+    id_participacion INT PRIMARY KEY AUTO_INCREMENT,
+    id_datos INT,
+    id_gestion INT,
+    nro_certificado VARCHAR(255) not null,
+    FOREIGN KEY (id_datos) REFERENCES datos(id),
+    FOREIGN KEY (id_gestion) REFERENCES gestion(id_gestion)
+);
+
+//cuestionarios
+CREATE TABLE calificaciones (
+    id_calificacion INT PRIMARY KEY AUTO_INCREMENT,
+    id_datos INT,
+    id_evento INT,
+    calificacion TINYINT CHECK (calificacion BETWEEN 1 AND 5),
+    fecha_habilitada DATE NOT NULL,
+    FOREIGN KEY (id_datos) REFERENCES datos(id),
+    FOREIGN KEY (id_evento) REFERENCES eventos(id)
+);

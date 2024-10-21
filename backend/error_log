@@ -1,0 +1,45 @@
+[21-Apr-2024 15:39:45 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:39:46 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:39:47 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:39:48 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:39:49 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:39:49 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:40:12 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:41:02 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:41:26 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:41:27 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:41:29 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:41:29 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:41:29 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:41:30 UTC] PHP Warning:  mysqli_fetch_assoc() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:42:15 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:42:20 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:42:21 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:42:22 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:42:22 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:42:23 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:43:28 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:43:28 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 14
+[21-Apr-2024 15:54:09 UTC] PHP Warning:  mysqli_num_rows() expects parameter 1 to be mysqli_result, bool given in /home/urbacars/public_html/yop/backend/get_events.php on line 12
+[21-Apr-2024 20:59:26 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 2
+[21-Apr-2024 20:59:26 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 3
+[21-Apr-2024 20:59:26 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 4
+[21-Apr-2024 20:59:26 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 5
+[21-Apr-2024 20:59:26 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/notification.php on line 5
+[21-Apr-2024 20:59:26 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function sendNotification(), 1 passed in /home/urbacars/public_html/yop/backend/get_events.php on line 31 and exactly 2 expected in /home/urbacars/public_html/yop/backend/notification.php:28
+Stack trace:
+#0 /home/urbacars/public_html/yop/backend/get_events.php(31): sendNotification(Array)
+#1 {main}
+  thrown in /home/urbacars/public_html/yop/backend/notification.php on line 28
+[21-Apr-2024 20:59:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 2
+[21-Apr-2024 20:59:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 3
+[21-Apr-2024 20:59:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 4
+[21-Apr-2024 20:59:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/cors.php on line 5
+[21-Apr-2024 20:59:29 UTC] PHP Warning:  Cannot modify header information - headers already sent by (output started at /home/urbacars/public_html/yop/backend/get_events.php:17) in /home/urbacars/public_html/yop/backend/notification.php on line 5
+[21-Apr-2024 20:59:29 UTC] PHP Fatal error:  Uncaught ArgumentCountError: Too few arguments to function sendNotification(), 1 passed in /home/urbacars/public_html/yop/backend/get_events.php on line 31 and exactly 2 expected in /home/urbacars/public_html/yop/backend/notification.php:28
+Stack trace:
+#0 /home/urbacars/public_html/yop/backend/get_events.php(31): sendNotification(Array)
+#1 {main}
+  thrown in /home/urbacars/public_html/yop/backend/notification.php on line 28
+[23-Apr-2024 23:41:19 UTC] PHP Warning:  mysqli_connect(): (HY000/1044): Access denied for user 'urbacars_root'@'104.37.172.199' to database 'urbacars_utepsa' in /home/urbacars/public_html/yop/backend/conexion.php on line 7
+[26-May-2024 22:45:52 UTC] PHP Warning:  mysqli_connect(): (HY000/1045): Access denied for user 'root'@'localhost' (using password: NO) in /home/urbacars/public_html/yop/backend/conexion.php on line 13

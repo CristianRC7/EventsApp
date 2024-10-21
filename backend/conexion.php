@@ -1,13 +1,16 @@
 <?php
-    $host = "localhost";
-    $user = "root";
+
+    $sername = "localhost";
+    $username = "root";
     $password = "";
-    $db = "eventsappdb";
+    $database = "utepsa";
+ 
+   
 
-    $conexion = new mysqli($host, $user, $pass, $db);
+    $connection = mysqli_connect($sername, $username, $password, $database);
 
-    if($conexion->connect_error){
-        die("Error en la conexión: " . $conexion->connect_error);
-    }
-        
+    if (!$connection) {
+        die("Connection failed: " . mysqli_connect_error());
+    } 
+    
 ?>
