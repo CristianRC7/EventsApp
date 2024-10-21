@@ -1,7 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { StyleSheet, View, Text, TextInput, TouchableOpacity, Alert, ActivityIndicator } from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
-import { useNavigation } from '@react-navigation/native';
+import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BASE_URL from '../config/Config';
 
@@ -12,20 +12,22 @@ export default function Login() {
   const [loading, setLoading] = useState(false);
   const navigation = useNavigation();
 
-  useEffect(() => {
-    checkSession();
-  }, []);
+  useFocusEffect(
+    React.useCallback(() => {
+      const checkSession = async () => {
+        try {
+          const usuarioGuardado = await AsyncStorage.getItem('usuario');
+          if (usuarioGuardado) {
+            navigation.navigate('Drawer', { screen: 'Profile', params: { usuario: usuarioGuardado } });
+          }
+        } catch (error) {
+          console.error('Error al verificar la sesión:', error);
+        }
+      };
 
-  const checkSession = async () => {
-    try {
-      const usuario = await AsyncStorage.getItem('usuario');
-      if (usuario) {
-        navigation.navigate('Drawer', { screen: 'Profile', params: { usuario } });
-      }
-    } catch (error) {
-      console.error('Error al verificar la sesión:', error);
-    }
-  };
+      checkSession();
+    }, [])
+  );
 
   const handleLogin = async () => {
     setLoading(true);
