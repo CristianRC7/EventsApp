@@ -3,6 +3,7 @@ import { createDrawerNavigator, DrawerItem } from '@react-navigation/drawer';
 import { SafeAreaView, StyleSheet, View, Image } from 'react-native';
 import Home from '../page/Home';
 import Profile from '../page/Profile';
+import QrSection from '../page/QrSection';
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 const Drawer = createDrawerNavigator();
@@ -44,23 +45,22 @@ const CustomDrawerContent = (props) => (
       label="Inicio"
       labelStyle={styles.drawerItemLabel}
       onPress={() => props.navigation.navigate('Home')}
-      options={{ title: 'Inicio' }}
-      icon={({ color, size }) => (
-        <Icon name="home" color={color} size={size} />
-      )}
+      icon={({ color, size }) => <Icon name="home" color={color} size={size} />}
       style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'Home' && styles.drawerItemActive]}
-      activeBackgroundColor={'#555555'}
+    />
+    <DrawerItem
+      label="Mi QR"
+      labelStyle={styles.drawerItemLabel}
+      onPress={() => props.navigation.navigate('QrSection')}  // Nueva ruta
+      icon={({ color, size }) => <Icon name="qrcode" color={color} size={size} />}
+      style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'QrSection' && styles.drawerItemActive]}
     />
     <DrawerItem
       label="Perfil"
       labelStyle={styles.drawerItemLabel}
       onPress={() => props.navigation.navigate('Profile')}
-      options={{ title: 'Perfil' }}
-      icon={({ color, size }) => (
-        <Icon name="user" color={color} size={size} />
-      )}
+      icon={({ color, size }) => <Icon name="user" color={color} size={size} />}
       style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'Profile' && styles.drawerItemActive]}
-      activeBackgroundColor={'#555555'}
     />
   </View>
 );
@@ -84,6 +84,11 @@ export default function DrawerNavigator() {
         name="Profile"
         component={Profile}
         options={{ title: 'Perfil' }}
+      />
+      <Drawer.Screen
+        name="QrSection"
+        component={QrSection} 
+        options={{ title: 'Mi QR' }}
       />
     </Drawer.Navigator>
   );
