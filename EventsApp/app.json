@@ -6,11 +6,6 @@
     "orientation": "portrait",
     "icon": "./assets/icono.png",
     "userInterfaceStyle": "light",
-    "splash": {
-      "image": "./assets/splash.png",
-      "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
-    },
     "ios": {
       "supportsTablet": true
     },
@@ -18,10 +13,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/icono.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.cristian_rcxd.EventsApp"
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/icono.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "489eebc3-f8e8-4c33-b4cc-bbfd3bfbcb1b"
+      }
     }
   }
 }
