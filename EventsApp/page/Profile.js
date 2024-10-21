@@ -125,7 +125,7 @@ export default function Profile({ route }) {
             renderItem={({ item }) => (
               <TouchableOpacity onPress={() => handleCertificadoClick(item.nro_certificado)}>
                 <View style={styles.certificadoContainer}>
-                  <Image source={require('../images/pdf_download.png')} style={styles.certificadoImage} />
+                  <Image source={require('../assets/pdf_download.png')} style={styles.certificadoImage} />
                   <Text style={styles.gestionText}>{item.gestion}</Text>
                 </View>
               </TouchableOpacity>
