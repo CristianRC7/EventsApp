@@ -45,7 +45,7 @@ export default function App() {
   useBackHandler(); 
 
   useEffect(() => {
-    const timer = setTimeout(() => setSplashVisible(false), 6000);
+    const timer = setTimeout(() => setSplashVisible(false), 4000);
     return () => clearTimeout(timer);
   }, []);
 
@@ -55,7 +55,7 @@ export default function App() {
 
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+      <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false , gestureEnabled: false}}>
         <Stack.Screen name="Login" component={Login} />
         <Stack.Screen name="Drawer" component={DrawerNavigator} />
         <Stack.Screen name="Event" component={Event} />

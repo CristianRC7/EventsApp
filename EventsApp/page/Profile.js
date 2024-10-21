@@ -4,7 +4,7 @@ import { Ionicons } from '@expo/vector-icons';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useNavigation } from '@react-navigation/native';
 import * as WebBrowser from 'expo-web-browser';
-import  BASE_URL  from '../config/Config';
+import BASE_URL from '../config/Config';
 
 export default function Profile({ route }) {
   const [nombreCompleto, setNombreCompleto] = useState('');
@@ -64,18 +64,19 @@ export default function Profile({ route }) {
     }
   };
 
-  const renderCertificado = ({ item }) => (
-    <TouchableOpacity onPress={() => handleCertificadoClick(item.nro_certificado)}>
-      <View style={styles.certificadoContainer}>
-        <Image source={require('../images/pdf_download.png')} style={styles.certificadoImage} />
-        <Text style={styles.gestionText}>{item.gestion}</Text>
-      </View>
-    </TouchableOpacity>
-  );
-
   const handleLogout = async () => {
-    await AsyncStorage.removeItem('nombre_completo');
-    navigation.navigate('Login');
+    try {
+      await AsyncStorage.removeItem('nombre_completo'); 
+      await AsyncStorage.removeItem('usuario'); 
+
+      setNombreCompleto('');
+      setCertificados([]);
+      setNoCertificados(false);
+
+      navigation.navigate('Login'); 
+    } catch (error) {
+      console.error('Error al cerrar sesión:', error);
+    }
   };
 
   const onRefresh = async () => {
@@ -121,7 +122,14 @@ export default function Profile({ route }) {
         ) : (
           <FlatList
             data={certificados}
-            renderItem={renderCertificado}
+            renderItem={({ item }) => (
+              <TouchableOpacity onPress={() => handleCertificadoClick(item.nro_certificado)}>
+                <View style={styles.certificadoContainer}>
+                  <Image source={require('../images/pdf_download.png')} style={styles.certificadoImage} />
+                  <Text style={styles.gestionText}>{item.gestion}</Text>
+                </View>
+              </TouchableOpacity>
+            )}
             keyExtractor={(item, index) => index.toString()}
             numColumns={2}
             contentContainerStyle={styles.certificadosContainer}
