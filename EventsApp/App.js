@@ -10,11 +10,39 @@ import Exhibitors from './page/Exhibitors';
 import Encuesta from './modules/Encuesta';
 import Form from './page/Form';
 import SplashScreen from './SplashScreen';
+import { BackHandler, Alert } from 'react-native';
 
 const Stack = createStackNavigator();
 
+const useBackHandler = () => {
+  useEffect(() => {
+    const backAction = () => {
+      Alert.alert("Salir", "¿Estás seguro que deseas salir de la aplicación?", [
+        {
+          text: "Cancelar",
+          onPress: () => null,
+          style: "cancel"
+        },
+        {
+          text: "Sí", onPress: () => BackHandler.exitApp()
+        }
+      ]);
+      return true; 
+    };
+
+    const backHandler = BackHandler.addEventListener(
+      "hardwareBackPress",
+      backAction
+    );
+
+    return () => backHandler.remove(); 
+  }, []);
+};
+
 export default function App() {
   const [isSplashVisible, setSplashVisible] = useState(true);
+
+  useBackHandler(); 
 
   useEffect(() => {
     const timer = setTimeout(() => setSplashVisible(false), 6000);
