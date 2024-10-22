@@ -75,7 +75,7 @@ export default function SelectEventScreen({ route }) {
   const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 0;
 
   return (
-    <SafeAreaView style={styles.safeArea}>
+    <SafeAreaView style={[styles.safeArea, { paddingTop: 35 }]}>
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
@@ -121,20 +121,23 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     backgroundColor: '#cf152d',
     paddingHorizontal: 20,
-    paddingBottom: 10,
+    paddingBottom: 15,
     marginBottom: 20,
   },
   backButton: {
     marginRight: 15,
+    marginTop: 5,
   },
   headerTitle: {
     fontSize: 20,
     fontWeight: 'bold',
     color: '#FFFFFF',
+    marginTop: 5,
   },
   text: {
     fontSize: 18,
     marginBottom: 20,
+    paddingHorizontal: 20,
   },
   eventListContainer: {
     flex: 1,
