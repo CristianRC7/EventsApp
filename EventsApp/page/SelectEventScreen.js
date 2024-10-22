@@ -84,26 +84,28 @@ export default function SelectEventScreen({ route }) {
           <Text style={styles.headerTitle}>Seleccionar Evento</Text>
         </View>
         <Text style={styles.text}>Seleccione un evento:</Text>
-        <ScrollView>
-          {eventos.map((evento) => (
-            <View key={evento.id} style={styles.checkboxContainer}>
-              <Text style={styles.eventDescription}>
-                {evento.descripcion.split('\n').map((line, index) => (
-                  <Text key={index}>{line}{'\n'}</Text>
-                ))}
-              </Text>
-              <Button
-                title={selectedEvento === evento.id ? "✓" : "Seleccionar"}
-                onPress={() => setSelectedEvento(evento.id)}
-              />
-            </View>
-          ))}
-        </ScrollView>
+        <View style={styles.eventListContainer}>
+          <ScrollView>
+            {eventos.map((evento) => (
+              <View key={evento.id} style={styles.checkboxContainer}>
+                <Text style={styles.eventDescription}>
+                  {evento.descripcion.split('\n').map((line, index) => (
+                    <Text key={index}>{line}{'\n'}</Text>
+                  ))}
+                </Text>
+                <Button
+                  title={selectedEvento === evento.id ? "✓" : "Seleccionar"}
+                  onPress={() => setSelectedEvento(evento.id)}
+                />
+              </View>
+            ))}
+          </ScrollView>
+        </View>
         <Button title="Registrar asistencia" onPress={registrarAsistencia} />
       </View>
     </SafeAreaView>
   );
-}
+}  
 
 const styles = StyleSheet.create({
   safeArea: {
@@ -134,14 +136,36 @@ const styles = StyleSheet.create({
     fontSize: 18,
     marginBottom: 20,
   },
+  eventListContainer: {
+    flex: 1,
+    paddingHorizontal: 20,
+  },
   checkboxContainer: {
     flexDirection: 'row',
     alignItems: 'center',
-    marginVertical: 10,
+    marginVertical: 15,
     justifyContent: 'space-between',
+    borderWidth: 1, 
+    borderColor: '#ccc', 
+    borderRadius: 10,
+    padding: 15, 
+    backgroundColor: '#f9f9f9', 
   },
   eventDescription: {
     flex: 1,
     marginRight: 10,
+    fontSize: 16, 
+  },
+  button: {
+    backgroundColor: '#cf152d', 
+    borderRadius: 5,
+    paddingVertical: 10, 
+    paddingHorizontal: 20, 
+  },
+  buttonText: {
+    color: '#FFFFFF', 
+    fontSize: 16, 
+    fontWeight: 'bold', 
+    textAlign: 'center', 
   },
 });

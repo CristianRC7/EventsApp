@@ -1,23 +1,22 @@
-import React, { useState, useEffect, useCallback, useLayoutEffect } from 'react';
-import { View, Text, StyleSheet, Button, Alert } from 'react-native';
+import React, { useState, useCallback, useLayoutEffect } from 'react';
+import { View, Text, StyleSheet, Button, Alert, Linking } from 'react-native';
 import { BarCodeScanner } from 'expo-barcode-scanner';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
-import BASE_URL from '../config/Config';
 
 export default function Scanner({ navigation }) {
   const [hasPermission, setHasPermission] = useState(null);
   const [scanned, setScanned] = useState(false);
   const [idUsuario, setIdUsuario] = useState('');
-  const [isFocused, setIsFocused] = useState(true);
+  const [isScanning, setIsScanning] = useState(false);
 
   useLayoutEffect(() => {
     navigation.setOptions({
-      headerTitle: 'Escáner', 
-      headerTitleAlign: 'right', 
+      headerTitle: 'Escáner',
+      headerTitleAlign: 'right',
       headerStyle: {
         backgroundColor: '#cf152d',
       },
-      headerTintColor: '#FFFFFF', 
+      headerTintColor: '#FFFFFF',
       headerTitleStyle: {
         fontWeight: 'bold',
         fontSize: 20,
@@ -29,21 +28,33 @@ export default function Scanner({ navigation }) {
     useCallback(() => {
       const fetchPermission = async () => {
         const { status } = await BarCodeScanner.requestPermissionsAsync();
-        setHasPermission(status === 'granted');
+        if (status === 'granted') {
+          setHasPermission(true);
+        } else {
+          setHasPermission(false);
+          Alert.alert(
+            'Permisos necesarios',
+            'Se necesita acceso a la cámara para escanear códigos QR. ¿Deseas abrir la configuración para habilitar los permisos?',
+            [
+              {
+                text: 'Cancelar',
+                style: 'cancel',
+              },
+              {
+                text: 'Ir a Configuración',
+                onPress: () => Linking.openSettings(),
+              },
+            ]
+          );
+        }
       };
 
       fetchPermission();
 
       return () => {
+        setIsScanning(false);
         setScanned(false);
       };
-    }, [])
-  );
-
-  useFocusEffect(
-    useCallback(() => {
-      setIsFocused(true);
-      return () => setIsFocused(false);
     }, [])
   );
 
@@ -64,22 +75,25 @@ export default function Scanner({ navigation }) {
     return <Text>Solicitando permiso para acceder a la cámara...</Text>;
   }
   if (hasPermission === false) {
-    return <Text>No se tiene acceso a la cámara.</Text>;
+    return null; 
   }
 
   return (
     <View style={styles.container}>
-      <Text style={styles.text}>Escanea el código QR para registrar asistencia</Text>
-
-      {isFocused && (
-        <BarCodeScanner
-          onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
-          style={StyleSheet.absoluteFillObject}
-        />
-      )}
-
-      {scanned && (
-        <Button title="Escanear de nuevo" onPress={() => setScanned(false)} />
+      {isScanning ? (
+        <>
+          <BarCodeScanner
+            onBarCodeScanned={scanned ? undefined : handleBarCodeScanned}
+            style={StyleSheet.absoluteFillObject}
+          />
+          {scanned && (
+            <Button title="Escanear de nuevo" onPress={() => setScanned(false)} />
+          )}
+        </>
+      ) : (
+        <View style={styles.buttonContainer}>
+          <Button title="Comenzar a escanear" onPress={() => setIsScanning(true)} />
+        </View>
       )}
     </View>
   );
@@ -88,11 +102,11 @@ export default function Scanner({ navigation }) {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
+  },
+  buttonContainer: {
+    flex: 1,
     justifyContent: 'center',
     alignItems: 'center',
-  },
-  text: {
-    fontSize: 18,
-    marginBottom: 20,
+    backgroundColor: 'black',
   },
 });
