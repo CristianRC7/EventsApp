@@ -31,7 +31,7 @@ export default function Login() {
 
   const handleLogin = async () => {
     setLoading(true);
-
+  
     try {
       const response = await fetch(`${BASE_URL}/login.php`, {
         method: 'POST',
@@ -43,12 +43,13 @@ export default function Login() {
           contrasena,
         }),
       });
-
+  
       const data = await response.json();
-
+  
       if (data.success) {
         await AsyncStorage.setItem('usuario', usuario);
         await AsyncStorage.setItem('nombre_completo', data.nombre_completo);
+        await AsyncStorage.setItem('id_usuario', data.id.toString());
         navigation.navigate('Drawer', { screen: 'Profile', params: { usuario } });
       } else {
         Alert.alert('Error', 'Datos incorrectos');

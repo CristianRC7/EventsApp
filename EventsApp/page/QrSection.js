@@ -11,10 +11,11 @@ export default function QrSection() {
   useEffect(() => {
     const fetchUserData = async () => {
       try {
+        const id_usuario = await AsyncStorage.getItem('id_usuario');
         const usuario = await AsyncStorage.getItem('usuario');
         const nombre_completo = await AsyncStorage.getItem('nombre_completo');
         if (usuario && nombre_completo) {
-          setUserData({ usuario, nombre_completo });
+          setUserData({ usuario, nombre_completo, id_usuario });
         }
       } catch (error) {
         console.error('Error al obtener los datos del usuario:', error);
@@ -43,12 +44,14 @@ export default function QrSection() {
     <View style={styles.container}>
       {userData ? (
         <>
-          <Text style={styles.text}>Usuario: {userData.usuario}</Text>
-          <Text style={styles.text}>Nombre: {userData.nombre_completo}</Text>
-          <QRCode
+        <Text style={styles.text}>Datos del usuario:</Text>
+        <Text style={styles.text}>ID: {userData.id_usuario}</Text>
+        <Text style={styles.text}>Usuario: {userData.usuario}</Text>
+        <Text style={styles.text}>Nombre: {userData.nombre_completo}</Text>
+        <QRCode
             value={JSON.stringify(userData)}
             size={200}
-          />
+        />
         </>
       ) : (
         <Text>Cargando datos del usuario...</Text>

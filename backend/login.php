@@ -17,7 +17,7 @@ if(isset($data['usuario']) && isset($data['contrasena'])){
         echo json_encode(array('success' => false, 'message' => 'Database query failed', 'error' => mysqli_error($connection)));
     } else if(mysqli_num_rows($result) > 0){
         $row = mysqli_fetch_assoc($result);
-        echo json_encode(array('success' => true, 'message' => 'Login successful', 'usuario' => $row['usuario'], 'nombre_completo' => $row['nombre_completo']));
+        echo json_encode(array('success' => true, 'message' => 'Login successful', 'usuario' => $row['usuario'], 'nombre_completo' => $row['nombre_completo'], 'id' => $row['id']));
     } else {
         echo json_encode(array('success' => false, 'message' => 'Invalid credentials'));
     }

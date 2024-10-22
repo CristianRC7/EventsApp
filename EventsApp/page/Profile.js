@@ -67,7 +67,8 @@ export default function Profile({ route }) {
   const handleLogout = async () => {
     try {
       await AsyncStorage.removeItem('nombre_completo'); 
-      await AsyncStorage.removeItem('usuario'); 
+      await AsyncStorage.removeItem('usuario');
+      await AsyncStorage.removeItem('id_usuario');
 
       setNombreCompleto('');
       setCertificados([]);
