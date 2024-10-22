@@ -1,12 +1,22 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { View, Text, Button, StyleSheet, SafeAreaView, TouchableOpacity, Alert } from 'react-native';
-import  BASE_URL  from '../config/Config';
+import AsyncStorage from '@react-native-async-storage/async-storage'; // Importa AsyncStorage
+import BASE_URL from '../config/Config';
 
 const Encuesta = ({ route, navigation }) => {
   const { evento } = route.params;
   const [calificacion, setCalificacion] = useState(null);
   const [loading, setLoading] = useState(false);
-  
+  const [usuarioId, setUsuarioId] = useState(null);
+
+  useEffect(() => {
+    const getUsuarioId = async () => {
+      const id = await AsyncStorage.getItem('id_usuario');
+      setUsuarioId(id); 
+    };
+
+    getUsuarioId();
+  }, []);
 
   const handleCalificacion = (valor) => {
     setCalificacion(valor);
@@ -24,6 +34,7 @@ const Encuesta = ({ route, navigation }) => {
           body: JSON.stringify({
             id_evento: evento.id,
             calificacion: calificacion,
+            id_datos: usuarioId,
           }),
         });
 
@@ -70,7 +81,6 @@ const Encuesta = ({ route, navigation }) => {
     </SafeAreaView>
   );
 };
-
 const styles = StyleSheet.create({
   safeArea: {
     flex: 1,
