@@ -14,7 +14,8 @@
         "foregroundImage": "./assets/icono.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.cristian_rcxd.EventsApp"
+      "package": "com.cristian_rcxd.EventsApp",
+      "permissions": ["CAMERA"] 
     },
     "web": {
       "favicon": "./assets/icono.png"

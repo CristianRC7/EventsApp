@@ -50,6 +50,7 @@ export default function Login() {
         await AsyncStorage.setItem('usuario', usuario);
         await AsyncStorage.setItem('nombre_completo', data.nombre_completo);
         await AsyncStorage.setItem('id_usuario', data.id.toString());
+        await AsyncStorage.setItem('isAdmin', data.isAdmin.toString()); 
         navigation.navigate('Drawer', { screen: 'Profile', params: { usuario } });
       } else {
         Alert.alert('Error', 'Datos incorrectos');
@@ -61,6 +62,7 @@ export default function Login() {
       setLoading(false);
     }
   };
+  
 
   return (
     <View style={styles.container}>

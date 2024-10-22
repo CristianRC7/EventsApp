@@ -9,7 +9,9 @@ import Inscription from './page/Inscription';
 import Exhibitors from './page/Exhibitors';
 import Encuesta from './modules/Encuesta';
 import Form from './page/Form';
+import SelectEventScreen from './page/SelectEventScreen';
 import SplashScreen from './SplashScreen';
+
 import { BackHandler, Alert } from 'react-native';
 
 const Stack = createStackNavigator();
@@ -64,6 +66,7 @@ export default function App() {
         <Stack.Screen name="Exhibitors" component={Exhibitors} />
         <Stack.Screen name="Form" component={Form} />
         <Stack.Screen name="Encuesta" component={Encuesta} options={{ title: 'Encuesta' }} />
+        <Stack.Screen name="SelectEventScreen" component={SelectEventScreen} />
       </Stack.Navigator>
     </NavigationContainer>
   );
