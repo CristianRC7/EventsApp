@@ -1,5 +1,6 @@
 create database eventsappdb;
 
+-- Tabla de datos
 create table datos(
 	id int PRIMARY KEY AUTO_INCREMENT,
     usuario varchar(90) not null,
@@ -7,6 +8,8 @@ create table datos(
     nombre_completo varchar(255) not null
 );
 
+
+-- Tabla de eventos
 create table eventos(
     id int PRIMARY KEY AUTO_INCREMENT,
     hora time not null,
@@ -26,7 +29,7 @@ CREATE TABLE inscripciones (
 );
 
 
-//certificados
+-- Tabla de gestiones
 
 CREATE TABLE gestion (
     id_gestion INT PRIMARY KEY AUTO_INCREMENT,
@@ -49,8 +52,7 @@ CREATE TABLE habilitacion_calificacion (
 	FOREIGN KEY (id_evento) REFERENCES eventos(id)
 );
 
-
-//cuestionarios
+-- Tabla de calificaciones
 CREATE TABLE calificaciones (
 	id_calificacion INT PRIMARY KEY AUTO_INCREMENT,
 	id_datos INT,
@@ -58,4 +60,11 @@ CREATE TABLE calificaciones (
 	calificacion TINYINT CHECK (calificacion BETWEEN 1 AND 5),
 	FOREIGN KEY (id_datos) REFERENCES datos(id),
 	FOREIGN KEY (id_evento) REFERENCES eventos(id)
+);
+
+-- Tabla de usuarios admin
+CREATE TABLE admin (
+    id_admin INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id_usuario INT not null,
+    FOREIGN KEY (id_usuario) REFERENCES datos(id)
 );
