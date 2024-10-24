@@ -1,5 +1,6 @@
-create database utepsa
+create database eventsappdb;
 
+-- Tabla de datos
 create table datos(
 	id int PRIMARY KEY AUTO_INCREMENT,
     usuario varchar(90) not null,
@@ -7,6 +8,8 @@ create table datos(
     nombre_completo varchar(255) not null
 );
 
+
+-- Tabla de eventos
 create table eventos(
     id int PRIMARY KEY AUTO_INCREMENT,
     hora time not null,
@@ -16,7 +19,17 @@ create table eventos(
     fecha date not null
 );
 
-//certificados
+-- Tabla de inscripciones
+CREATE TABLE inscripciones (
+	id_inscripcion INT PRIMARY KEY AUTO_INCREMENT,
+	id_datos INT,
+	id_evento INT,
+	FOREIGN KEY (id_datos) REFERENCES datos(id),
+	FOREIGN KEY (id_evento) REFERENCES eventos(id)
+);
+
+
+-- Tabla de gestiones
 
 CREATE TABLE gestion (
     id_gestion INT PRIMARY KEY AUTO_INCREMENT,
@@ -32,13 +45,26 @@ CREATE TABLE participacion (
     FOREIGN KEY (id_gestion) REFERENCES gestion(id_gestion)
 );
 
-//cuestionarios
+-- Tabla de habilitación de calificaciones
+CREATE TABLE habilitacion_calificacion (
+	id_evento INT PRIMARY KEY,
+	fecha_habilitada DATE NOT NULL,
+	FOREIGN KEY (id_evento) REFERENCES eventos(id)
+);
+
+-- Tabla de calificaciones
 CREATE TABLE calificaciones (
-    id_calificacion INT PRIMARY KEY AUTO_INCREMENT,
-    id_datos INT,
-    id_evento INT,
-    calificacion TINYINT CHECK (calificacion BETWEEN 1 AND 5),
-    fecha_habilitada DATE NOT NULL,
-    FOREIGN KEY (id_datos) REFERENCES datos(id),
-    FOREIGN KEY (id_evento) REFERENCES eventos(id)
+	id_calificacion INT PRIMARY KEY AUTO_INCREMENT,
+	id_datos INT,
+	id_evento INT,
+	calificacion TINYINT CHECK (calificacion BETWEEN 1 AND 5),
+	FOREIGN KEY (id_datos) REFERENCES datos(id),
+	FOREIGN KEY (id_evento) REFERENCES eventos(id)
+);
+
+-- Tabla de usuarios admin
+CREATE TABLE admin (
+    id_admin INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+    id_usuario INT not null,
+    FOREIGN KEY (id_usuario) REFERENCES datos(id)
 );

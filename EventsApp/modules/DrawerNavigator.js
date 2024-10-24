@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     marginTop: 10,
   },
   logo: {
-    width: 320,
+    width: 300,
     height: 70,
     resizeMode: 'contain',
   },
