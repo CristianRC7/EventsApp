@@ -69,15 +69,7 @@ const CustomDrawerContent = (props) => {
         icon={({ color, size }) => <Icon name="qrcode" color={color} size={size} />}
         style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'QrSection' && styles.drawerItemActive]}
       />
-      <DrawerItem
-        label="Perfil"
-        labelStyle={styles.drawerItemLabel}
-        onPress={() => props.navigation.navigate('Profile')}
-        icon={({ color, size }) => <Icon name="user" color={color} size={size} />}
-        style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'Profile' && styles.drawerItemActive]}
-      />
-
-      {isAdmin && (
+       {isAdmin && (
         <DrawerItem
           label="Escáner"
           labelStyle={styles.drawerItemLabel}
@@ -86,6 +78,15 @@ const CustomDrawerContent = (props) => {
           style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'Scanner' && styles.drawerItemActive]}
         />
       )}
+      <DrawerItem
+        label="Perfil"
+        labelStyle={styles.drawerItemLabel}
+        onPress={() => props.navigation.navigate('Profile')}
+        icon={({ color, size }) => <Icon name="user" color={color} size={size} />}
+        style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'Profile' && styles.drawerItemActive]}
+      />
+
+     
     </View>
   );
 };
@@ -106,11 +107,6 @@ export default function DrawerNavigator() {
         options={{ title: 'Inicio' }}
       />
       <Drawer.Screen
-        name="Profile"
-        component={Profile}
-        options={{ title: 'Perfil' }}
-      />
-      <Drawer.Screen
         name="QrSection"
         component={QrSection} 
         options={{ title: 'Mi QR' }}
@@ -119,6 +115,11 @@ export default function DrawerNavigator() {
         name="Scanner"
         component={Scanner} 
         options={{ title: 'Escáner' }}
+      />
+      <Drawer.Screen
+        name="Profile"
+        component={Profile}
+        options={{ title: 'Perfil' }}
       />
     </Drawer.Navigator>
   );
