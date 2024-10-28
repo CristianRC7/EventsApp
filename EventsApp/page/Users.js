@@ -11,7 +11,8 @@ import {
   StatusBar, 
   Platform, 
   ActivityIndicator,
-  RefreshControl
+  RefreshControl,
+  Alert
 } from 'react-native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import { useNavigation } from '@react-navigation/native';
@@ -62,6 +63,45 @@ const Users = () => {
     setRefreshing(false);
   };
 
+  const handleDeleteUser = (userId) => {
+    Alert.alert(
+      'Confirmar eliminación',
+      '¿Estás seguro de que deseas eliminar este usuario?',
+      [
+        {
+          text: 'Cancelar',
+          onPress: () => console.log('Eliminación cancelada'),
+          style: 'cancel',
+        },
+        {
+          text: 'Eliminar',
+          onPress: async () => {
+            try {
+              const response = await fetch(`${BASE_URL}/deleteUser.php`, {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ id: userId }),
+              });
+              const result = await response.json();
+              if (result.success) {
+                Alert.alert('Éxito', 'Usuario eliminado correctamente');
+                fetchUsers(); 
+              } else {
+                Alert.alert('Error', result.message);
+              }
+            } catch (error) {
+              console.error(error);
+              Alert.alert('Error', 'Ocurrió un problema al eliminar el usuario.');
+            }
+          },
+        },
+      ],
+      { cancelable: false }
+    );
+  };
+
   return (
     <SafeAreaView style={[styles.safeArea, { paddingTop: statusBarHeight }]}>
       <View style={styles.container}>
@@ -72,7 +112,6 @@ const Users = () => {
           <Text style={styles.headerTitle}>Usuarios</Text>
         </View>
 
-        {/* Search Bar */}
         <TextInput
           style={styles.searchBar}
           placeholder="Buscar por usuario o nombre completo"
@@ -90,12 +129,20 @@ const Users = () => {
               <View style={styles.userCard}>
                 <Text style={styles.userText}>Usuario: {item.usuario}</Text>
                 <Text style={styles.userText}>Nombre Completo: {item.nombre_completo}</Text>
-                <TouchableOpacity 
-                  style={styles.editButton} 
-                  onPress={() => navigation.navigate('EditUser', { userId: item.id })}
-                >
-                  <Text style={styles.editButtonText}>Editar</Text>
-                </TouchableOpacity>
+                <View style={styles.buttonContainer}>
+                  <TouchableOpacity 
+                    style={styles.editButton} 
+                    onPress={() => navigation.navigate('EditUser', { userId: item.id })}
+                  >
+                    <Text style={styles.editButtonText}>Editar</Text>
+                  </TouchableOpacity>
+                  <TouchableOpacity 
+                    style={styles.deleteButton} 
+                    onPress={() => handleDeleteUser(item.id)}
+                  >
+                    <Text style={styles.deleteButtonText}>Eliminar</Text>
+                  </TouchableOpacity>
+                </View>
               </View>
             )}
             refreshControl={
@@ -156,15 +203,30 @@ const styles = StyleSheet.create({
     fontSize: 16,
     color: '#333333',
   },
-  editButton: {
+  buttonContainer: {
+    flexDirection: 'row',
+    justifyContent: 'space-between',
     marginTop: 10,
+  },
+  editButton: {
     paddingVertical: 8,
     paddingHorizontal: 20,
     backgroundColor: '#cf152d',
     borderRadius: 5,
     alignItems: 'center',
   },
+  deleteButton: {
+    paddingVertical: 8,
+    paddingHorizontal: 20,
+    backgroundColor: '#ff0000',
+    borderRadius: 5,
+    alignItems: 'center',
+  },
   editButtonText: {
+    color: '#FFFFFF',
+    fontWeight: 'bold',
+  },
+  deleteButtonText: {
     color: '#FFFFFF',
     fontWeight: 'bold',
   },

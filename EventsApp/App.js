@@ -14,6 +14,7 @@ import SplashScreen from './SplashScreen';
 
 import Users from './page/Users';
 import EditUser from './page/EditUser';
+import AddUsers from './page/AddUsers';
 
 import { BackHandler, Alert } from 'react-native';
 
@@ -73,6 +74,7 @@ export default function App() {
 
         <Stack.Screen name='Users' component={Users} />
         <Stack.Screen name='EditUser' component={EditUser} />
+        <Stack.Screen name='AddUsers' component={AddUsers} />
 
       </Stack.Navigator>
     </NavigationContainer>
