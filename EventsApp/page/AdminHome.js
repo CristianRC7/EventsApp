@@ -29,9 +29,9 @@ export default function AdminHome({ navigation }) {
     <SafeAreaView style={styles.safeArea}>
       <View style={styles.container}>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Event')}>
+          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Users')}>
             <Icon name="calendar" size={50} color="#cf152d" />
-            <Text style={styles.boxText}>Eventos</Text>
+            <Text style={styles.boxText}>Usuarios</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Exhibitors')}>
             <Icon name="address-card" size={50} color="#cf152d" />
