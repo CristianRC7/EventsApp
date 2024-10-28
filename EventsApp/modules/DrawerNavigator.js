@@ -4,7 +4,8 @@ import { SafeAreaView, StyleSheet, View, Image } from 'react-native';
 import Home from '../page/Home';
 import Profile from '../page/Profile';
 import QrSection from '../page/QrSection';
-import Scanner from '../page/Scanner'; 
+import Scanner from '../page/Scanner';
+import AdminHome from '../page/AdminHome'; 
 import Icon from 'react-native-vector-icons/FontAwesome';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
@@ -78,6 +79,15 @@ const CustomDrawerContent = (props) => {
           style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'Scanner' && styles.drawerItemActive]}
         />
       )}
+      {isAdmin && (
+        <DrawerItem
+          label="Admin"
+          labelStyle={styles.drawerItemLabel}
+          onPress={() => props.navigation.navigate('AdminHome')} 
+          icon={({ color, size }) => <Icon name="cog" color={color} size={size} />}
+          style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'AdminHome' && styles.drawerItemActive]}
+        />
+      )}
       <DrawerItem
         label="Perfil"
         labelStyle={styles.drawerItemLabel}
@@ -85,8 +95,6 @@ const CustomDrawerContent = (props) => {
         icon={({ color, size }) => <Icon name="user" color={color} size={size} />}
         style={[styles.drawerItem, props.state.routeNames[props.state.index] === 'Profile' && styles.drawerItemActive]}
       />
-
-     
     </View>
   );
 };
@@ -115,6 +123,11 @@ export default function DrawerNavigator() {
         name="Scanner"
         component={Scanner} 
         options={{ title: 'Escáner' }}
+      />
+      <Drawer.Screen
+        name="AdminHome"
+        component={AdminHome} 
+        options={{ title: 'Admin' }}
       />
       <Drawer.Screen
         name="Profile"
