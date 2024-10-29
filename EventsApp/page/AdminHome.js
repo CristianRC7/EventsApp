@@ -49,14 +49,11 @@ export default function AdminHome({ navigation }) {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.box} onPress={openWebLink}>
-            <Icon name="globe" size={50} color="#cf152d" />
-            <Text style={styles.boxText}>Visitar Página Web</Text>
+          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('AddEvent')}>
+            <Icon name="plus" size={50} color="#cf152d" />
+            <Text style={styles.boxText}>Agregar Evento</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Support')}>
-            <Icon name="life-ring" size={50} color="#cf152d" />
-            <Text style={styles.boxText}>Soporte</Text>
-          </TouchableOpacity>
+          
         </View>
       </View>
     </SafeAreaView>
