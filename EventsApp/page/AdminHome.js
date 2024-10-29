@@ -43,9 +43,9 @@ export default function AdminHome({ navigation }) {
             <Icon name="wpforms" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Habilitar Encuesta</Text>
           </TouchableOpacity>
-          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Form')}>
-            <Icon name="map" size={50} color="#cf152d" />
-            <Text style={styles.boxText}>Formulario de eventos</Text>
+          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('EditEvent')}>
+            <Icon name="edit" size={50} color="#cf152d" />
+            <Text style={styles.boxText}>Editar Evento</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>

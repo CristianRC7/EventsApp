@@ -17,6 +17,8 @@ import EditUser from './page/EditUser';
 import AddUsers from './page/AddUsers';
 import EnableSurvey from './page/EnableSurvey';
 import SelectSurveyScreen from './page/SelectSurveyScreen';
+import EditSelectedEvent from './page/EditSelectedEvent';
+import EditEvent from './page/EditEvent';
 
 import { BackHandler, Alert } from 'react-native';
 
@@ -79,6 +81,8 @@ export default function App() {
         <Stack.Screen name='AddUsers' component={AddUsers} />
         <Stack.Screen name='EnableSurvey' component={EnableSurvey} />
         <Stack.Screen name='SelectSurveyScreen' component={SelectSurveyScreen} />
+        <Stack.Screen name='EditSelectedEvent' component={EditSelectedEvent} />
+        <Stack.Screen name='EditEvent' component={EditEvent} />
 
 
       </Stack.Navigator>
