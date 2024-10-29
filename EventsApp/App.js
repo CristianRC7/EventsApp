@@ -20,6 +20,8 @@ import SelectSurveyScreen from './page/SelectSurveyScreen';
 import EditSelectedEvent from './page/EditSelectedEvent';
 import EditEvent from './page/EditEvent';
 import AddEvent from './page/AddEvent';
+import AddCertificate from './page/AddCertificate';
+import AddCertificatedSelected from './page/AddCertificatedSelected';
 
 import { BackHandler, Alert } from 'react-native';
 
@@ -85,6 +87,8 @@ export default function App() {
         <Stack.Screen name='EditSelectedEvent' component={EditSelectedEvent} />
         <Stack.Screen name='EditEvent' component={EditEvent} />
         <Stack.Screen name='AddEvent' component={AddEvent} />
+        <Stack.Screen name='AddCertificate' component={AddCertificate} />
+        <Stack.Screen name='AddCertificatedSelected' component={AddCertificatedSelected} />
 
 
       </Stack.Navigator>

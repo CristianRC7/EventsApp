@@ -53,6 +53,10 @@ export default function AdminHome({ navigation }) {
             <Icon name="plus" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Agregar Evento</Text>
           </TouchableOpacity>
+          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('AddCertificate')}>
+            <Icon name="plus" size={50} color="#cf152d" />
+            <Text style={styles.boxText}>Agregar Certificado Estudiante</Text>
+          </TouchableOpacity>
           
         </View>
       </View>

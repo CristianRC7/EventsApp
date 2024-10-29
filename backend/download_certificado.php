@@ -31,9 +31,11 @@ if (isset($_GET['usuario']) && isset($_GET['nro_certificado'])) {
 
         $pdf->SetFont('helvetica', 'B', 26);
 
-        if ($gestion == 2022) {
-            $yNombre = 143; 
-        } else {
+        if($gestion == 2022){
+            $yNombre = 143;
+        } elseif($gestion == 2024){
+            $yNombre = 128;
+        }else {
             $yNombre = 125; 
         }
 
