@@ -39,12 +39,12 @@ export default function AdminHome({ navigation }) {
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
-          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Inscription')}>
-            <Icon name="map-signs" size={50} color="#cf152d" />
-            <Text style={styles.boxText}>Puntos de inscripción</Text>
+          <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('EnableSurvey')}>
+            <Icon name="wpforms" size={50} color="#cf152d" />
+            <Text style={styles.boxText}>Habilitar Encuesta</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Form')}>
-            <Icon name="wpforms" size={50} color="#cf152d" />
+            <Icon name="map" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Formulario de eventos</Text>
           </TouchableOpacity>
         </View>
