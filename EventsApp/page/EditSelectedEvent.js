@@ -10,6 +10,7 @@ import {
   Platform, 
   StatusBar 
 } from 'react-native';
+import DateTimePicker from '@react-native-community/datetimepicker';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import BASE_URL from '../config/Config';
@@ -20,11 +21,19 @@ const EditSelectedEvent = () => {
   const { event } = route.params;
 
   const [descripcion, setDescripcion] = useState(event.descripcion);
-  const [hora, setHora] = useState(event.hora);
+  const [hora, setHora] = useState(new Date(`1970-01-01T${event.hora}:00`)); // Convierte `hora` a tipo Date
   const [aula, setAula] = useState(event.aula);
   const [expositor, setExpositor] = useState(event.expositor);
+  const [showTimePicker, setShowTimePicker] = useState(false);
 
   const statusBarHeight = Platform.OS === 'android' ? StatusBar.currentHeight : 0;
+
+  const onTimeChange = (event, selectedTime) => {
+    setShowTimePicker(false);
+    if (selectedTime) {
+      setHora(selectedTime);
+    }
+  };
 
   const updateEvent = () => {
     fetch(`${BASE_URL}/update_event.php`, {
@@ -35,7 +44,7 @@ const EditSelectedEvent = () => {
       body: JSON.stringify({
         id: event.id,
         descripcion,
-        hora,
+        hora: hora.toTimeString().slice(0, 5), // Guarda solo la hora y minutos
         aula,
         expositor,
       }),
@@ -73,11 +82,17 @@ const EditSelectedEvent = () => {
           />
 
           <Text style={styles.label}>Hora</Text>
-          <TextInput 
-            style={styles.input} 
-            value={hora} 
-            onChangeText={setHora} 
-          />
+          <TouchableOpacity style={styles.input} onPress={() => setShowTimePicker(true)}>
+            <Text>{hora.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</Text>
+          </TouchableOpacity>
+          {showTimePicker && (
+            <DateTimePicker
+              value={hora}
+              mode="time"
+              display="default"
+              onChange={onTimeChange}
+            />
+          )}
 
           <Text style={styles.label}>Lugar</Text>
           <TextInput 

@@ -59,12 +59,10 @@ const SelectSurveyScreen = () => {
       <Text style={styles.header}>Evento Seleccionado</Text>
       <Text style={styles.eventDetails}>ID de Evento: {eventId}</Text>
 
-      {/* Display the selected date */}
       <Text style={styles.selectedDate}>
         Fecha seleccionada: {date.toLocaleDateString()}
       </Text>
 
-      {/* Always show the DateTimePicker */}
       <DateTimePicker
         value={date}
         mode="date"
@@ -76,7 +74,6 @@ const SelectSurveyScreen = () => {
         <Text style={styles.saveButtonText}>Guardar Fecha</Text>
       </TouchableOpacity>
 
-      {/* Cancel Button */}
       <TouchableOpacity
         style={styles.cancelButton}
         onPress={() => navigation.navigate('EnableSurvey')}
