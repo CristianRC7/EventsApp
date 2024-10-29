@@ -74,7 +74,7 @@ const AddCertificate = () => {
           <TouchableOpacity onPress={() => navigation.goBack()} style={styles.backButton}>
             <Icon name="arrow-left" size={24} color="#FFFFFF" />
           </TouchableOpacity>
-          <Text style={styles.headerTitle}>Usuarios</Text>
+          <Text style={styles.headerTitle}>Agregar Certificado</Text>
         </View>
 
         <TextInput

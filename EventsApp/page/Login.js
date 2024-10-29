@@ -24,7 +24,6 @@ export default function Login() {
           console.error('Error al verificar la sesión:', error);
         }
       };
-
       checkSession();
     }, [])
   );
@@ -38,10 +37,7 @@ export default function Login() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({
-          usuario,
-          contrasena,
-        }),
+        body: JSON.stringify({ usuario, contrasena }),
       });
   
       const data = await response.json();
@@ -62,16 +58,19 @@ export default function Login() {
       setLoading(false);
     }
   };
-  
 
   return (
     <View style={styles.container}>
+      <Text style={styles.title}>Iniciar sesión</Text>
+      
       <TextInput
         style={styles.input}
         placeholder="Nro. de Agenda"
         value={usuario}
         onChangeText={setUsuario}
+        placeholderTextColor="#888"
       />
+      
       <View style={styles.passwordContainer}>
         <TextInput
           style={styles.passwordInput}
@@ -79,6 +78,7 @@ export default function Login() {
           value={contrasena}
           onChangeText={setContrasena}
           secureTextEntry={!passwordVisible}
+          placeholderTextColor="#888"
         />
         <TouchableOpacity
           style={styles.eyeButton}
@@ -87,6 +87,7 @@ export default function Login() {
           <Icon name={passwordVisible ? 'eye' : 'eye-slash'} size={24} color="#cf152d" />
         </TouchableOpacity>
       </View>
+      
       <TouchableOpacity
         style={[styles.button, loading ? styles.buttonDisabled : null]}
         onPress={handleLogin}
@@ -110,30 +111,48 @@ const styles = StyleSheet.create({
     padding: 20,
     backgroundColor: '#FFFFFF',
   },
+  title: {
+    fontSize: 24,
+    fontWeight: 'bold',
+    color: '#cf152d',
+    marginBottom: 30,
+  },
   input: {
     width: '100%',
     height: 50,
-    paddingHorizontal: 10,
+    paddingHorizontal: 15,
     borderWidth: 1,
-    borderColor: '#ccc',
+    borderColor: '#ddd',
+    backgroundColor: '#f9f9f9',
     marginBottom: 20,
-    borderRadius: 5,
-    color: '#000000',
+    borderRadius: 8,
+    color: '#333',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
   },
   passwordContainer: {
     width: '100%',
     flexDirection: 'row',
     alignItems: 'center',
-    marginBottom: 20,
     borderWidth: 1,
-    borderColor: '#ccc',
-    borderRadius: 5,
+    borderColor: '#ddd',
+    borderRadius: 8,
+    backgroundColor: '#f9f9f9',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 1 },
+    shadowOpacity: 0.1,
+    shadowRadius: 3,
+    elevation: 2,
+    marginBottom: 20,
   },
   passwordInput: {
     flex: 1,
     height: 50,
-    paddingHorizontal: 10,
-    color: '#000000',
+    paddingHorizontal: 15,
+    color: '#333',
   },
   eyeButton: {
     width: 50,
@@ -142,10 +161,16 @@ const styles = StyleSheet.create({
   },
   button: {
     backgroundColor: '#cf152d',
-    padding: 15,
-    borderRadius: 5,
+    paddingVertical: 15,
+    paddingHorizontal: 25,
+    borderRadius: 8,
     width: '100%',
     alignItems: 'center',
+    shadowColor: '#000',
+    shadowOffset: { width: 0, height: 2 },
+    shadowOpacity: 0.2,
+    shadowRadius: 4,
+    elevation: 3,
   },
   buttonDisabled: {
     backgroundColor: '#f6a4af',

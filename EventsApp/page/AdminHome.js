@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react';
 import { StyleSheet, SafeAreaView, View, Text, TouchableOpacity, Dimensions, Linking } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
+import MaterialIcons from 'react-native-vector-icons/MaterialIcons'; // Cambiado a MaterialIcons
 import { useNavigation } from '@react-navigation/native';
 
 const screenWidth = Dimensions.get('window').width;
@@ -8,12 +8,12 @@ const screenWidth = Dimensions.get('window').width;
 export default function AdminHome({ navigation }) {
   useEffect(() => {
     navigation.setOptions({
-      headerTitle: 'AdminHome', 
-      headerTitleAlign: 'right', 
+      headerTitle: 'AdminHome',
+      headerTitleAlign: 'right',
       headerStyle: {
         backgroundColor: '#cf152d',
       },
-      headerTintColor: '#FFFFFF', 
+      headerTintColor: '#FFFFFF',
       headerTitleStyle: {
         fontWeight: 'bold',
         fontSize: 20,
@@ -30,34 +30,33 @@ export default function AdminHome({ navigation }) {
       <View style={styles.container}>
         <View style={styles.row}>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('Users')}>
-            <Icon name="user" size={50} color="#cf152d" />
+            <MaterialIcons name="person" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Usuarios</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('AddUsers')}>
-            <Icon name="plus" size={50} color="#cf152d" />
+            <MaterialIcons name="person-add" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Agregar Usuario</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('EnableSurvey')}>
-            <Icon name="wpforms" size={50} color="#cf152d" />
+            <MaterialIcons name="assignment" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Habilitar Encuesta</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('EditEvent')}>
-            <Icon name="edit" size={50} color="#cf152d" />
+            <MaterialIcons name="event" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Editar Evento</Text>
           </TouchableOpacity>
         </View>
         <View style={styles.row}>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('AddEvent')}>
-            <Icon name="plus" size={50} color="#cf152d" />
+            <MaterialIcons name="add-circle-outline" size={50} color="#cf152d" />
             <Text style={styles.boxText}>Agregar Evento</Text>
           </TouchableOpacity>
           <TouchableOpacity style={styles.box} onPress={() => navigation.navigate('AddCertificate')}>
-            <Icon name="plus" size={50} color="#cf152d" />
-            <Text style={styles.boxText}>Agregar Certificado Estudiante</Text>
+            <MaterialIcons name="school" size={50} color="#cf152d" />
+            <Text style={styles.boxText}>Agregar Certificado</Text>
           </TouchableOpacity>
-          
         </View>
       </View>
     </SafeAreaView>
@@ -79,10 +78,10 @@ const styles = StyleSheet.create({
   row: {
     flexDirection: 'row',
     justifyContent: 'space-between',
-    width: screenWidth - 40, 
+    width: screenWidth - 40,
   },
   box: {
-    width: (screenWidth - 40) / 2 - 15, 
+    width: (screenWidth - 40) / 2 - 15,
     height: 120,
     backgroundColor: '#f2f2f2',
     justifyContent: 'center',
